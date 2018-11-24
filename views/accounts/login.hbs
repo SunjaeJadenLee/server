@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+          <form class="" method="POST" action="login">
+            <div class="form-label-group">
+              <input name="userName" class="form-control" required autofocus>
+              <label class="my-4" for="userName">User Name</label>
+            </div>
+
+            <div class="form-label-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" required>
+              <label class="my-4" for="password">Password</label>
+            </div>
+            {{#if info}}
+            <div class="validation-info">
+              <h6>{{info}}</h6>
+            </div>
+            {{/if}}
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customCheck1">
+              <label class="custom-control-label" for="customCheck1">Remember password</label>
+            </div>
+            <button class="btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 card card-signin my-5">
+      <img src="images/backgroundLogin.jpeg" style="width: auto;">
+    </div>
+  </div>
+</div>

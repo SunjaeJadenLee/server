@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mx-auto" style="margin:40px 0px">
+            <div class="card card-signin" style="width:400px">
+                <img class="card-img-top" src="/images/backgroundIndex.jpeg" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{user.userName}}</h4>
+                    <p class="card-text">{{user.firstName}} {{user.lastName}}</p>
+                    <p class="card-text">Phone #: {{user.phoneNumber}}</p>
+                    <p class="card-text">Address: {{user.city}} {{user.state}} {{user.postal}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-7" style="margin:40px 0px">
+            <div class="card-title">
+                <h3>Post List</h3>
+            </div>
+            {{#board}}
+            <div class="card card-signin">
+                <div class="card-body">    
+                    <a class="text-dark card-text" style="font-size:20px" href="/detail/{{id}}"><strong>{{boardTitle}}</strong></a>
+                    <div class="text-right">
+                        <form action="/create/{{userName}}" method="POST">
+                            <button class="btn btn-icon" type="submit"><i class="brand fa fa-edit"></i></button>
+                            <a class="btn" href="/delete/{{userName}}/{{boardTitle}}"><i class="fa fa-trash-alt"></i></a>&nbsp;
+                            <input type="hidden" name="id" , value="{{id}}" />
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            {{/board}}
+        </div>
+    </div>
+
+</div>

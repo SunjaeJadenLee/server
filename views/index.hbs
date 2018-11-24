@@ -1,0 +1,30 @@
+<div class="">
+    <header class="container mb-auto index-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <div class="inner">
+            <h1 class="text-center py-4 cover-heading my-4">Hello!, {{user.userName}}
+                <br>
+                Welcome to Jaden Leader Board
+            </h1>
+        </div>
+        <div class="text-center form-group">
+            {{#if user}}
+            <a href="/board" class="btn-dark py-4 px-4 index-button"><i class="fa fa-clipboard-list px-1"></i>Post List</a>
+            <a href="/logout" class="btn-dark py-4 px-4 index-button"><i class="fa fa-sign-out-alt px-1"></i>Log out</a>
+            {{else}}
+            <a href="/board" class="btn-dark py-4 px-4 index-button"><i class="fa fa-clipboard-list px-1"></i>Post List</a>
+        </div>
+        {{/if}}
+    </header>
+    <div class="container-fluid row">
+        <h2 class=" col-sm-3 index-logo"><span style="color:crimson">J</span>aden Sunjae Lee</h2>
+        <div class="col-sm-9">
+            <h1 class=" index-p" style="padding-bottom:3px">Sunjae Lee Leader Board with Node.js</h1>
+            {{#if user}}
+             <a href="/login" class="btn-light py-3 px-3 "><i class="fa fa-sign-out-alt px-1"></i>Log out</a>
+            {{else}}
+            <a href="/login" class="btn-light py-3 px-3 "><i class="fa fa-sign-in-alt px-1"></i>Log in</a>
+            <a href="/signup" class="btn-light py-3 px-3 "><i class="fa fa-user-plus px-1"></i>Sign in</a>
+            {{/if}}
+        </div>
+    </div>
+</div>

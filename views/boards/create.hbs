@@ -1,0 +1,58 @@
+{{#if board}}
+<div class="container">
+    <form class="row" method="post" action="/create_edit">
+        <div class="col-md-8">
+            <input type="hidden" name="userName" value={{user.userName}}>
+            <input type="hidden" name="id" value={{board.id}}>
+            <div>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Title</label>
+                <input type="text" class="form-control" name="boardTitle" value={{board.boardTitle}} id="formGroupExampleInput"
+                    placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Content</label>
+                <textarea class="form-control" name="boardContent" id="formGroupExampleInput2" placeholder="Content"
+                    rows="10">{{board.boardContent}}</textarea>
+            </div>
+            <div>
+                <button class="btn btn-info" type="submit">Create</button>
+            </div>
+        </div>
+        <div class="col-md-4" style="margin:20px 0px 0px;">
+            <div class="card" style="width:380px">
+                <img style="margin:33px 0px 0px; border:2px solid; margin-left:15px" width="350" height="330" src="../images/backgroundCreate.jpeg">
+                <div class="card-body">
+                    <h4 class="card-title">{{board.userName}}</h4>
+                    <p class="card-text"><a href="#">Go to see {{board.userName}}'s other posts</a></p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+{{else}}
+<div class="container">
+    <form class="row" method="post" action="/create">
+        <div class="col-md-8">
+            <input type="hidden" name="userName" value={{user.userName}}>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Title</label>
+                <input type="text" class="form-control" name="boardTitle" id="formGroupExampleInput" placeholder="Example input">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Context</label>
+                <textarea class="form-control" name="boardContent" id="formGroupExampleInput2" placeholder="content" rows="10"></textarea>
+            </div>
+            <div>
+                <button class="btn btn-info" type="submit">Create</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img style="margin:33px 0px 0px; border:2px solid" width="300" height="330" src="images/backgroundCreate.jpeg">
+        </div>
+    </form>
+</div>
+{{/if}}

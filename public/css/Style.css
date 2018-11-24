@@ -1,0 +1,65 @@
+.body{
+    background-color: lightgrey;
+}
+
+
+.navbar-brand{
+    font-size: 50px;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.nav-item{
+    font-size: 20px;
+    padding: 20px 10px 0px;
+}
+
+.index-container{
+    background-image: url('../images/backgroundIndex.jpeg')
+}
+
+.index-button{
+    font-size: 30px;
+    color: white;
+}
+
+.index-logo{
+    font-size: 60px;
+    color:white;
+    padding-top:40px;
+    text-align: center;
+}
+
+.index-p{
+    font-size:40px;
+    color: white;
+    padding-top:40px;
+    text-align: left;
+}
+
+.btn-icon{
+    background-color:white;
+}
+.btn-dark{
+    border: 1px solid;
+    border-radius: 10px
+}
+.btn-light{
+    margin:4px 4px 4px;
+    font-size:20px;
+    border-radius: 10px;
+}
+.validation-info{
+    padding-top:1px;
+    color:red;
+}
+.created-date{
+    font-size:10px;
+}
+
+.container-fluid{
+    background-color: black;
+    width:100%;
+    height: 200PX;
+    position: relative;
+}

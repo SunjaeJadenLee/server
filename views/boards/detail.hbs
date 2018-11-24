@@ -1,0 +1,67 @@
+{{#board}}
+<div class="container">
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-sm-8">
+            <h5 style="margin-top:10px">Title: </h5>
+            {{boardTitle}}
+        </div>
+        <div class="col-sm-4">
+            <h5>Created Date: </h5>
+            {{createdAt}}
+        </div>
+    </div>
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card" style="height:450px">
+                <div class="card-body">
+                    {{boardContent}}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="/images/backgroundIndex.jpeg" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{userName}}</h4>
+                    <p class="card-text"><a href="/board_search">Go to see {{userName}}'s other posts</a></p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 my-2">
+                <h5 style="margin-top:10px">Comment</h5>
+                {{/board}}
+                <hr>
+                {{#comment}}
+                <div class="row">
+                <h5 class="col-sm-9">{{userName}}</h5>  <span class="col-sm-3 created-date">{{createdAt}}</span>
+                </div>
+                <p>{{commentContent}}</p>
+              <hr>
+              {{/comment}}
+             </div>
+        </div>
+        
+        <!--end comments-->
+        {{#board}}
+        <form class="row" action="/comment_create" method="POST">
+            <input type="hidden" name="boardId" value="{{id}}" />
+            <textarea name="commentContent" class="col-sm-7 my-2"></textarea>
+            <div class="col-sm-5 my-2">
+                <button class="btn btn-dark px-3 py-3" style="margin-left:-13px" type="submit">Submit</button>
+            </div>
+        </form>
+        {{/board}}
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <a class="btn btn-dark my-2" href="/board">List</a>
+        </div>
+    </div>
+</div>
+
