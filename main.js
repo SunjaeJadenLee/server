@@ -1,6 +1,8 @@
 const express = require('express');
 const hdbs = require('express-handlebars');
 const sessions = require('express-session');
+const dotenv = require('dotenv');
+dotenv.config();
 const sequelize = require('sequelize');
 const pg = require('pg');
 const bodyParser = require('body-parser');
@@ -8,6 +10,7 @@ const path = require('path');
 
 var session;
 
+const HTTP_PORT = process.env.PORT || 8000;
 
 const seq = new sequelize('users', 'postgres', 'Tjswo9411@', {
     host: 'localhost',
@@ -246,6 +249,6 @@ app.get('/delete/:value/:title', (req, res) => {
 })
 
 
-app.listen('3000', () => {
+app.listen(HTTP_PORT, () => {
     console.log('port 3000 start');
 });
