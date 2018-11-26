@@ -195,14 +195,27 @@ app.post('/create_edit', (req, res) => {
         .then(response => res.render('boards/board', { board: response, user: session.user }));
 })
 
+app.post('/comment_create', (req, res) => {
+    session = req.session;
+        var aComment = seq.sync()
+        .then(() => comments.create({
+            userName: session.user.userName,
+            boardId: req.body.boardId,
+            commentContent: req.body.commentContent
+        }))
+        seq.sync().then(comments.findAll({where:{ boardId : req.body.boardId}})).then(resp=>console.log(resp));
+        res.redirect(`/detail/${req.body.boardId}`);
+    
+})
+
 app.get('/detail/:value', (req, res) => {
     session = req.session;
     seq.sync().then(boards.findById(req.params.value)
         .then(response => {
-            comments.findAll({ where: { boardId: response.id } })
-                .then(resp => {
-                    res.render('boards/detail', { board: response, user: session.user, comment: resp })
-                })
+            seq.sync().then(comments.findAll({ where: { boardId: response.id } })
+            .then(resp => {
+                res.render('boards/detail', { board: response, user: session.user, comment: resp })
+            }))
         }));
 })
 
@@ -232,16 +245,7 @@ app.get('/delete/:value/:title', (req, res) => {
     }
 })
 
-app.post('/comment_create', (req, res) => {
-    session = req.session;
-    var aComment = seq.sync()
-        .then(() => comments.create({
-            userName: session.user.userName,
-            boardId: req.body.boardId,
-            commentContent: req.body.commentContent
-        })).then(res.redirect(`/detail/${req.body.boardId}`));
 
-})
 app.listen('3000', () => {
     console.log('port 3000 start');
 });
