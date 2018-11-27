@@ -12,12 +12,12 @@ var session;
 
 const HTTP_PORT = process.env.PORT || 8000;
 
-const seq = new sequelize('users', 'postgres', 'Tjswo9411@', {
-    host: 'localhost',
+const seq = new sequelize('d9ujm213gftcu8', 'hxsfcouwqezsve', '2509ec298306086e1f888d00d53fdf1bc444956db52a7a3a69868d85d37e9fe5', {
+    host: 'ec2-54-204-40-248.compute-1.amazonaws.com',
     dialect: 'postgres',
-    port: 5433,
+    port: 5432,
     dialectOptions: {
-        ssl: false
+        ssl: true
     }
 })
 const app = express();
@@ -32,6 +32,11 @@ app.use(sessions({
 }))
 const users = seq.define('users',
     {
+        id: {
+                type: sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement:true
+            },
         userName: sequelize.STRING,
         password: sequelize.STRING,
         firstName: sequelize.STRING,
@@ -43,13 +48,22 @@ const users = seq.define('users',
     });
 
 const boards = seq.define('boards', {
-
+    id: {
+        type: sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement:true
+    },
     boardTitle: sequelize.STRING,
     boardContent: sequelize.STRING,
     userName: sequelize.STRING
 })
 
 const comments = seq.define('comments', {
+    id: {
+        type: sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement:true
+    },
     boardId: sequelize.INTEGER,
     userName: sequelize.STRING,
     commentContent: sequelize.STRING
