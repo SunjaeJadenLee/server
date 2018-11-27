@@ -17,7 +17,7 @@ const seq = new sequelize('d9ujm213gftcu8', 'hxsfcouwqezsve', '2509ec298306086e1
     dialect: 'postgres',
     port: 5432,
     dialectOptions: {
-        ssl: true
+        ssl: true,
     }
 })
 const app = express();
@@ -186,7 +186,13 @@ app.post('/board_search', (req, res) => {
 
 app.get('/create', (req, res) => {
     session = req.session;
-    res.render('boards/create', { user: session.user });
+    if (session.user == undefined) {
+        res.render('accounts/login',{info:"You cannot create a board without login"});
+        return;
+    }else{
+        res.render('boards/create', { user: session.user });
+    }
+
 })
 
 app.post('/create/:value', (req, res) => {
@@ -214,6 +220,9 @@ app.post('/create_edit', (req, res) => {
 
 app.post('/comment_create', (req, res) => {
     session = req.session;
+    if(session.user == undefined){
+        res.render('accounts/login',{info:"You cannot comment without login"});
+    }else{
         var aComment = seq.sync()
         .then(() => comments.create({
             userName: session.user.userName,
@@ -222,7 +231,7 @@ app.post('/comment_create', (req, res) => {
         }))
         seq.sync().then(comments.findAll({where:{ boardId : req.body.boardId}})).then(resp=>console.log(resp));
         res.redirect(`/detail/${req.body.boardId}`);
-    
+    }
 })
 
 app.get('/detail/:value', (req, res) => {
