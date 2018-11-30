@@ -4,6 +4,7 @@ const sessions = require('express-session');
 const dotenv = require('dotenv');
 dotenv.config();
 const sequelize = require('sequelize');
+const sanitizeHTML = require('sanitize-html');
 const pg = require('pg');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -72,11 +73,18 @@ const comments = seq.define('comments', {
 boards.hasMany(comments, { foreignKey: 'fk_boardId', sourceKey: 'id' });
 comments.belongsTo(boards, { foreignKey: 'fk_boardId', targetKey: 'id', as: 'Commnet' });
 
-app.engine('hbs', hdbs({
+const hbs = hdbs.create({
     extname: 'hbs',
     layoutsDir: 'views/layouts',
-    defaultLayout: 'layout'
-}))
+    defaultLayout: 'layout',
+    helpers:{
+        sanitized: (text)=>{
+            return sanitizeHTML(text);
+        }
+    }
+})
+
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 app.use(express.static('public'));

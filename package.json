@@ -17,6 +17,7 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "pg": "^7.6.1",
+    "sanitize-html": "^1.19.1",
     "sequelize": "^4.41.2"
   }
 }

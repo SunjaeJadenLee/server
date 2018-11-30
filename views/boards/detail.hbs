@@ -15,9 +15,8 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="card" style="height:450px">
-                <div class="card-body">
-                    {{boardContent}}
-                </div>
+                <textarea class="card-body" style="resize:none" readonly>{{sanitized boardContent}}
+                </textarea>
             </div>
         </div>
         <div class="col-sm-4">
@@ -41,7 +40,7 @@
                 <div class="row">
                 <h5 class="col-sm-9">{{userName}}</h5>  <span class="col-sm-3 created-date">{{createdAt}}</span>
                 </div>
-                <p>{{commentContent}}</p>
+                <p>{{sanitized commentContent}}</p>
               <hr>
               {{/comment}}
              </div>
